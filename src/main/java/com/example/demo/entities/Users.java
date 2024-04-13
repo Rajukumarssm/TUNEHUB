@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Users {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)//to generate id automatic
 	int id;
 	String username;
 	String email;

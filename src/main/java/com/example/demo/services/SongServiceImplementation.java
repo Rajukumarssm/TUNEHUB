@@ -9,8 +9,7 @@ import com.example.demo.entities.Song;
 import com.example.demo.repositories.SongRepository;
 
 @Service
-public class SongServiceImplementation 
-							implements SongService{
+public class SongServiceImplementation implements SongService{
 
 	@Autowired
 	SongRepository repo;

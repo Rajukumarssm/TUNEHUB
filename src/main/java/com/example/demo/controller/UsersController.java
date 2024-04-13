@@ -24,23 +24,30 @@ public class UsersController {
 	
 	@Autowired
 	SongService songService;
-	
+	//signup page
 	@PostMapping("/register")
-	public String addUsers(@ModelAttribute Users user) {
+	public String addUsers(@ModelAttribute Users user) 
+	//@ModelAttribute Users user binds the request parameters(all input value) to the User object
+	{
+		//first check user exists or not
 		boolean userStatus = service.emailExists(user.getEmail());
+		//emailExists method in User service class
 		if(userStatus  == false) {
 			service.addUser(user);	
 		}
 		return "login";	
 	}
 	
+	
+	//login page
 	@PostMapping("/validate")
 	public String validate(@RequestParam("email")String email,
 			@RequestParam("password") String password, HttpSession session, Model model) {
 		
 		if(service.validateUser(email,password) == true) {
 			String role= service.getRole(email);
-			
+			//yhan role find krenge 
+			//get role method present in userservice interface
 			session.setAttribute("email", email);
 			
 			if(role.equals("admin")) {

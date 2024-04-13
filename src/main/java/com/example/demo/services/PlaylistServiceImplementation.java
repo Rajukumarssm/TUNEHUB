@@ -9,8 +9,7 @@ import com.example.demo.entities.Playlist;
 import com.example.demo.repositories.PlaylistRepository;
 
 @Service
-public class PlaylistServiceImplementation 
-					implements PlaylistService
+public class PlaylistServiceImplementation implements PlaylistService
 {
 	@Autowired
 	PlaylistRepository repo;
@@ -22,6 +21,7 @@ public class PlaylistServiceImplementation
 	@Override
 	public List<Playlist> fetchAllPlaylists() {
 		return repo.findAll();
+		//findAll()method in jpa repo that gives all data in that database
 	}
 
 }

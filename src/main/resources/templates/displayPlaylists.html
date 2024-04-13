@@ -24,8 +24,16 @@
 				<h3 th:text="${pllist.name}"></h3>
 				<ul>
 					<li th:each="song:${pllist.songs}"><span
-						th:text="${song.name}"></span> <audio controls
+						th:text="${song.name}"></span> 
+						<audio controls
 							th:src="${song.link}" type="audio/mpeg"></audio></li>
+							<!-- <audio controls>: This part creates an HTML5 audio player with controls (play, pause, volume, etc.) -->
+				<!-- $ symbol: This is used to refer to variables in Thymeleaf expressions. 
+				It's often combined with the ${...} syntax to access variables from the mode -->
+				
+				<!--  @ symbol: This is used to specify URLs or link expressions in Thymeleaf. 
+				It's used for link creation, especially when generating URLs dynamically -->
+				
 				</ul>
 			</div>
 		</div>

@@ -16,6 +16,7 @@ public class SongController {
 	@Autowired
 	SongService service;
 	
+	//called when admin click on add song submit button
 	@PostMapping("/addSong")
 	public String addSong(@ModelAttribute Song song) {
 		
@@ -27,6 +28,7 @@ public class SongController {
 		}
 		else {
 			System.out.println("Song already exists");
+			return "SongExist";
 		}
 		return "adminHome";
 		
@@ -34,25 +36,27 @@ public class SongController {
 	
 	@GetMapping("/displaySongs")
 	public String viewSongs(Model model) {
-		
+		//model is used to add songs details comes from databse to controller
+		//then fetch to html page by thymeleaf 
 		List<Song> songsList = service.fetchAllSongs();
 		model.addAttribute("songs", songsList);
 		
 		return "displaySongs";
 	}
 	
+	//display song to customer
 	@GetMapping("/playSongs")
 	public String playSongs(Model model) {
 		
 		boolean premiumUser = false;
-		
+		//agar premium hua to display kro
 		if(premiumUser == true) {
 			List<Song> songsList = service.fetchAllSongs();
 			model.addAttribute("songs", songsList);
 			return "displaySongs";
 		}
 		else {
-			return "makePayment";
+			return "makePayment";//make an html file to display a message only make payment
 		}	
 	}
 	

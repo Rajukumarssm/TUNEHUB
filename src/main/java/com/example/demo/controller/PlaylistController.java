@@ -26,23 +26,26 @@ public class PlaylistController {
 	
 	@GetMapping("/createPlaylist")
 	public String createPlaylist(Model model) {
-		
+		//here fetch all song to create playlist 
 		List<Song> songList= songService.fetchAllSongs();
 		model.addAttribute("songs", songList);
 		
 		return "createPlaylist";
 	}
 	
+	//called when click on create playlist form submit button 
 	@GetMapping("/addPlaylist")
 	public String addPlaylist(@ModelAttribute Playlist playlist) {
 		playlistService.addPlaylist(playlist);
 		
 		//updating song table
-		List<Song> songList = playlist.getSongs();
+		List<Song> songList = playlist.getSongs();//it return list of song
 		
 		for(Song s : songList) {
-			s.getPlaylists().add(playlist);
-			songService.updateSong(s);			
+			s.getPlaylists().add(playlist);//getplaylist in song.java method basically here mapping is done then add playlist
+			
+			songService.updateSong(s);	//here updatesong is called to update song details ie it add playlist name
+			//this method in songservice.java
 		}
 		
 		return "adminHome";

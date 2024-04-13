@@ -6,8 +6,8 @@ import com.example.demo.entities.Users;
 import com.example.demo.repositories.UsersRepository;
 
 @Service
-public class UsersServiceImplementation 
-							implements UsersService{
+public class UsersServiceImplementation implements UsersService{
+							
 	@Autowired
 	UsersRepository repo;
 	@Override

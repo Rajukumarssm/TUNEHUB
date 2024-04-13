@@ -17,6 +17,8 @@ public class NavController {
 		return "registration";
 	}
 	
+	
+	//this controller called when click on add song method by admin
 	@GetMapping("/newSong")
 	public String newSong() {
 		return "newSong";
